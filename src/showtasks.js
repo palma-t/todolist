@@ -1,8 +1,23 @@
-// besoin de creer un objet avec toutes les classes dedans ? 
-// peut-etre pas mal pour toutes les affiches
+function showTasks(array) {
+    let content = document.querySelector("#content");
+    let allTaskTitle = document.createElement("h2");
+    allTaskTitle.innerText = "All tasks";
+    content.appendChild(allTaskTitle);
+    
+    for(const task of array) {
+        let taskSquare = document.createElement("div");
+        let taskTitle = document.createElement("h3");
+        taskTitle.innerText = task.title;
 
-function showTasks() {
+        let taskDescription = document.createElement("p");
+        taskDescription.innerText = task.description;
 
+        taskSquare.classList.add("task-style");
+        taskSquare.appendChild(taskTitle);
+        taskSquare.appendChild(taskDescription);
+
+        content.appendChild(taskSquare);
+    }
 }
 
 function showTodayTasks() {
@@ -19,5 +34,9 @@ function showOverdueTasks() {
 
 }
 
+function showProjectTasks() {
 
-export { showTasks, showTodayTasks, showUpcomingTasks, showOverdueTasks }
+
+}
+
+export { showTasks, showTodayTasks, showUpcomingTasks, showOverdueTasks, showProjectTasks }
