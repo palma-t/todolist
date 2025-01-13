@@ -1,34 +1,19 @@
-import { Task, allTasks } from "./taskconstructor"
+import { Task, allTasksArray } from "./taskconstructor"
 
-function createTask() {
-    let taskForm = document.createElement("form");
-
-    let inputName = document.createElement("input");
-    inputName.type = "text";
-    inputName.name = "taskName";
-    inputName.placeholder = "Task name";
-
-    let inputDescription = document.createElement("input");
-    inputDescription.type = "text";
-    inputDescription.name = "inputDescription";
-    inputDescription.placeholder = "Description";
-
-    let buttonSubmit = document.createElement('input');
-    buttonSubmit.type = 'submit';
-    buttonSubmit.value = 'Submit';
-
-    buttonSubmit.addEventListener("click", () => {
-        let newTask = new Task(inputName.value, inputDescription.value)
-        allTasks.push(newTask);
-        //ajout a named project
-    })
-
-    taskForm.appendChild(inputName);
-    taskForm.appendChild(inputDescription);
-    taskForm.appendChild(buttonSubmit);
-
-    // trouver comment faire apparaitre l'ensemble
-    
+function openForm() {
+    document.getElementById("taskForm").style.display = "block";
 }
 
-export { createTask, allTasks }
+function createTask() {
+    let buttonSubmit = document.querySelector("#taskFormButton")
+    buttonSubmit.addEventListener("click", () => {
+        let inputName = document.querySelector("#taskN");
+        let inputDescription = document.querySelector("#taskD");
+        let newTask = new Task(inputName.value, inputDescription.value)
+        allTasksArray.push(newTask);
+        console.log(allTasksArray);
+        //ajout a named project
+    })
+}
+
+export { openForm, createTask }
