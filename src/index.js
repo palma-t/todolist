@@ -1,11 +1,19 @@
 import "./styles.css";
 import { showOverdueTasks, showTasks, showTodayTasks, showUpcomingTasks } from "./showtasks.js"
-import { allTasks } from "./taskconstructor.js"; // ou from createtasks ?
+import { allTasksArray } from "./taskconstructor.js"; // ou from createtasks ?
+import { openForm, createTask } from "./createtask.js";
 
 let addTaskButton = document.querySelector("#addTask");
 addTaskButton.addEventListener("click", () => {
+    openForm();
+})
 
-});
+createTask();
+
+function closeForm() {
+    document.getElementById("taskForm").style.display = "none";
+}
+closeForm();
 
 let todayButton = document.querySelector("#addTask");
 todayButton.addEventListener("click", () => {
@@ -24,7 +32,7 @@ overdueButton.addEventListener("click", () => {
 
 let showAllTasks = document.querySelector("#allTasks");
 showAllTasks.addEventListener("click", () => {
-    showTasks(allTasks);
+    showTasks(allTasksArray);
 });
 
 /* les fonctions dont on va avoir besoin (réfléchir aux classes après)
