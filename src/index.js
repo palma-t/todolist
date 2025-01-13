@@ -1,19 +1,29 @@
 import "./styles.css";
 import { showOverdueTasks, showTasks, showTodayTasks, showUpcomingTasks } from "./showtasks.js"
-import { allTasksArray } from "./taskconstructor.js"; // ou from createtasks ?
+import { allTasksArray } from "./taskconstructor.js";
 import { openForm, createTask } from "./createtask.js";
+
+const popup = document.getElementById("taskForm");
+const overlay = document.getElementById("overlay");
+const closeButton = document.getElementById("closeButton");
 
 let addTaskButton = document.querySelector("#addTask");
 addTaskButton.addEventListener("click", () => {
-    openForm();
+    popup.classList.remove("hidden");
+    overlay.classList.remove("hidden");
 })
 
-createTask();
+overlay.addEventListener("click", () => {
+    popup.classList.add("hidden");
+    overlay.classList.add("hidden");
+});
 
-function closeForm() {
-    document.getElementById("taskForm").style.display = "none";
-}
-closeForm();
+closeButton.addEventListener("click", () => {
+    popup.classList.add("hidden");
+    overlay.classList.add("hidden");
+});
+
+createTask();
 
 let todayButton = document.querySelector("#addTask");
 todayButton.addEventListener("click", () => {
