@@ -1,12 +1,12 @@
 *{
     margin: 0;
-    font-family: sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
     display: grid;
     grid-template-columns: 1fr 3fr;
-
+    height: 100vh;
 }
 
 header {
@@ -27,18 +27,37 @@ h1 {
     margin-bottom: 60px;
 }
 
+h2 {
+    font-size: 1.6rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: rgb(42, 73, 165);
+    margin-bottom: 10px;
+}
+
 nav {
     font-size: 1rem;
 }
 
 nav ul li {
     list-style: none;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+nav ul li:hover {
+    background-color: white;
+    color: rgb(42, 73, 165);
+    cursor: pointer;
 }
 
 #projectList {
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 0.2px solid white;
 }
 
 #content {
@@ -48,43 +67,80 @@ nav ul li {
 }
 
 .form-popup {
-    display: none;
     position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
-    /*changer pour mettre au centre*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid rgb(42, 73, 165);
+    z-index: 1000;
   }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.hidden {
+    display: none;
+}
 
 .form-container {
     max-width: 300px;
-    padding: 10px;
+    padding: 15px;
     background-color: white;
 }
-  
+
+.top-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+#closeButton {
+    border: 1px solid white;
+    font-size: 1rem;
+    color: rgb(42, 73, 165);
+    background-color: white;
+    font-family: inherit;
+    padding: 5px;
+}
+
+#closeButton:hover {
+    border: 1px solid rgb(42, 73, 165);
+    color: white;
+    border-radius: 50px;
+    background-color: rgb(42, 73, 165);
+    cursor: pointer;
+}
+
+
 .form-container input[type=text] {
-    width: 100%;
+    width: 90%;
     padding: 15px;
     margin: 5px 0 22px 0;
     border: none;
-    background: #f1f1f1;
+    background: aliceblue;
 }
 
 .form-container input[type=text]:focus {
-    background-color: #ddd;
+    background-color: rgb(215, 233, 248);
     outline: none;
 }
 
 .form-container .btn {
-    background-color: #04AA6D;
+    background-color: rgb(42, 73, 165);
     color: white;
-    padding: 16px 20px;
     border: none;
     cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
     opacity: 0.8;
+
+    padding: 16px 20px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .form-container .btn:hover {
