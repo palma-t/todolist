@@ -10,7 +10,9 @@ class Project {
 
     addTask(title, description) {
         let newTask = new Task(title, description);
-        this.push(newTask);
+        console.log(newTask)
+        this[3].push(newTask);
+        console.log(this);
     }
 
     removeTask() {
