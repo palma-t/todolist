@@ -1,6 +1,6 @@
-import { Task } from "./taskconstructor"
+import { Task, allTasks } from "./taskconstructor"
 
-createTask() {
+function createTask() {
     let taskForm = document.createElement("form");
 
     let inputName = document.createElement("input");
@@ -19,17 +19,16 @@ createTask() {
 
     buttonSubmit.addEventListener("click", () => {
         let newTask = new Task(inputName.value, inputDescription.value)
-        //ajout a default project ou named project
+        allTasks.push(newTask);
+        //ajout a named project
     })
 
     taskForm.appendChild(inputName);
     taskForm.appendChild(inputDescription);
     taskForm.appendChild(buttonSubmit);
 
-
-
-    //ajouter un addeventlistener au bouton pour générer 
-    // une nouvelle tache avec new Task
-    // et trouver comment faire apparaitre l'ensemble
+    // trouver comment faire apparaitre l'ensemble
     
 }
+
+export { createTask, allTasks }
