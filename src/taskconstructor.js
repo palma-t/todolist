@@ -6,11 +6,12 @@ class Task {
         this.priority = priority; */
     }
 
-    deleteTask() {
+   /* deleteTask() {
 
     }
-
+*/
 }
 
+let allTasksArray = [];
 
-export { Task, deleteTask }
+export { Task, allTasksArray }
