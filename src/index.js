@@ -2,27 +2,64 @@ import "./styles.css";
 import { showOverdueTasks, showTasks, showTodayTasks, showUpcomingTasks } from "./showtasks.js"
 import { allTasksProject } from "./projectconstructor.js";
 import { createTask } from "./createtask.js";
+import { showProjectsMenu } from "./showprojects.js";
 
-const popup = document.getElementById("taskForm");
+//Stop form from sending the data
+const form = document.querySelector("#taskForm");
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+});
+
+//Deal with opening and closing the task's form
+const popup1 = document.getElementById("taskForm");
 const overlay = document.getElementById("overlay");
-const closeButton = document.getElementById("closeButton");
+const closeButton1 = document.getElementById("closeButton");
+const submitButton1 = document.querySelector("#taskFormButton");
 
 let addTaskButton = document.querySelector("#addTask");
 addTaskButton.addEventListener("click", () => {
-    popup.classList.remove("hidden");
+    popup1.classList.remove("hidden");
     overlay.classList.remove("hidden");
 })
 
 overlay.addEventListener("click", () => {
-    popup.classList.add("hidden");
+    popup1.classList.add("hidden");
     overlay.classList.add("hidden");
 });
 
-closeButton.addEventListener("click", () => {
-    popup.classList.add("hidden");
+closeButton1.addEventListener("click", () => {
+    popup1.classList.add("hidden");
     overlay.classList.add("hidden");
 });
 
+submitButton1.addEventListener("click", () => {
+    popup.classList.add("hidden");
+    overlay.classList.add("hidden");
+})
+
+//Deal with project's form
+const popup2 = document.getElementById("taskForm");
+const closeButton2 = document.getElementById("closeButton");
+const submitButton2 = document.querySelector("#taskFormButton");
+
+let addProjectButton = document.querySelector("#project-title");
+addProjectButton.addEventListener("click", () => {
+    popup2.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+})
+
+closeButton2.addEventListener("click", () => {
+    popup2.classList.add("hidden");
+    overlay.classList.add("hidden");
+});
+
+submitButton2.addEventListener("click", () => {
+    popup2.classList.add("hidden");
+    overlay.classList.add("hidden");
+})
+
+// Deal with showing tasks
 createTask();
 
 let todayButton = document.querySelector("#addTask");
@@ -40,10 +77,14 @@ overdueButton.addEventListener("click", () => {
     showOverdueTasks();
 });
 
-let showAllTasks = document.querySelector("#allTasks");
-showAllTasks.addEventListener("click", () => {
+let showTasksButton = document.querySelector("#allTasks");
+showTasksButton.addEventListener("click", () => {
     showTasks(allTasksProject);
 });
+
+//Always effective / default appearence 
+showTasks(allTasksProject);
+showProjectsMenu();
 
 /* les fonctions dont on va avoir besoin (réfléchir aux classes après)
 - add a task

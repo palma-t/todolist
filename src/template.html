@@ -26,17 +26,18 @@
                     <li id="allTasks">All tasks</li>
                 </ul>
             </div>
-            <div id="projectList">
+            <div id="project-title">
                 <div>Projects</div>
                 <div class="plus-button">+</div>
             </div>
+            <div id="projectList"></div>
         </nav>
     </header>
     <div id="content">
     </div>
     <div class="overlay hidden" id="overlay"></div>
     <div class="form-popup hidden" id="taskForm">
-        <form action="" class="form-container" onsubmit="event.preventDefault();">
+        <form action="" class="form-container">
             <div class="top-form">
                 <h3>Add a task</h3>
                 <button id="closeButton">x</button>
@@ -48,7 +49,20 @@
             <label for="taskD">Description</label>
             <input type="text" name="taskD" id="taskD">
         
-            <button type="submit" class="btn" id="taskFormButton" onclick="">Let's go</button>
+            <button type="submit" class="btn" id="taskFormButton">Let's go</button>
+        </form>
+    </div>
+    <div class="form-popup hidden" id="projectForm">
+        <form action="" class="form-container">
+            <div class="top-form">
+                <h3>Add a project</h3>
+                <button id="closeButton">x</button>
+            </div>
+        
+            <label for="projectN">Project's name</label>
+            <input type="text" name="projectN" id="projectN">
+        
+            <button type="submit" class="btn" id="projectFormButton">Let's go</button>
         </form>
     </div>
 </body>
