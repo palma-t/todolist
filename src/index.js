@@ -3,16 +3,15 @@ import { showOverdueTasks, showTasks, showTodayTasks, showUpcomingTasks } from "
 import { allTasksProject } from "./projectconstructor.js";
 import { createTask } from "./createtask.js";
 import { showProjectsMenu } from "./showprojects.js";
-
-//Stop form from sending the data
-const form = document.querySelector("#taskForm");
-
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-});
+import { createProject } from "./createproject.js"
 
 //Deal with opening and closing the task's form
 const popup1 = document.getElementById("taskForm");
+
+popup1.addEventListener('submit', function(event) {
+    event.preventDefault();
+});
+
 const overlay = document.getElementById("overlay");
 const closeButton1 = document.getElementById("closeButton");
 const submitButton1 = document.querySelector("#taskFormButton");
@@ -34,14 +33,19 @@ closeButton1.addEventListener("click", () => {
 });
 
 submitButton1.addEventListener("click", () => {
-    popup.classList.add("hidden");
+    popup1.classList.add("hidden");
     overlay.classList.add("hidden");
 })
 
 //Deal with project's form
-const popup2 = document.getElementById("taskForm");
+const popup2 = document.getElementById("projectForm");
+
+popup2.addEventListener('submit', function(event) {
+    event.preventDefault();
+});
+
 const closeButton2 = document.getElementById("closeButton");
-const submitButton2 = document.querySelector("#taskFormButton");
+const submitButton2 = document.querySelector("#projectFormButton");
 
 let addProjectButton = document.querySelector("#project-title");
 addProjectButton.addEventListener("click", () => {
@@ -59,9 +63,11 @@ submitButton2.addEventListener("click", () => {
     overlay.classList.add("hidden");
 })
 
-// Deal with showing tasks
+// Deal with showing tasks and projects
 createTask();
+createProject();
 
+//Deal with menu choices
 let todayButton = document.querySelector("#addTask");
 todayButton.addEventListener("click", () => {
     showTodayTasks();
@@ -85,6 +91,7 @@ showTasksButton.addEventListener("click", () => {
 //Always effective / default appearence 
 showTasks(allTasksProject);
 showProjectsMenu();
+
 
 /* les fonctions dont on va avoir besoin (réfléchir aux classes après)
 - add a task
