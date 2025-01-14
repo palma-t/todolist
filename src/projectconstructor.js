@@ -1,26 +1,20 @@
-import { Task } from "./taskconstructor"
-
 class Project {
-    constructor(title, description, priority, tasks) {
-        this.title = title;
-        this.description = description;
-        this.priority = priority;
-        this.tasks = tasks;
+    constructor() {
+        this.tasks = [];
     }
 
-    addTask(title, description) {
-        let newTask = new Task(title, description);
-        console.log(newTask)
-        this[3].push(newTask);
+    addTask(task) {
+        this.tasks.push(task);
         console.log(this);
     }
 
-    removeTask() {
-
+    removeTask(index) {
+        this.tasks.splice(index, 1);
+        console.log(this);
     }
 
 }
 
-export { Project, addTask, removeTask } 
+let allTasksProject = new Project();
 
-//ajouter les method dans l'export ?
+export { Project, allTasksProject } 

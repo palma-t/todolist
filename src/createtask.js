@@ -1,8 +1,5 @@
-import { Task, allTasksArray } from "./taskconstructor"
-
-function openForm() {
-    document.getElementById("taskForm").style.display = "block";
-}
+import { Task } from "./taskconstructor"
+import { allTasksProject } from "./projectconstructor.js"
 
 function createTask() {
     let buttonSubmit = document.querySelector("#taskFormButton")
@@ -10,10 +7,10 @@ function createTask() {
         let inputName = document.querySelector("#taskN");
         let inputDescription = document.querySelector("#taskD");
         let newTask = new Task(inputName.value, inputDescription.value)
-        allTasksArray.push(newTask);
-        console.log(allTasksArray);
+        allTasksProject.addTask(newTask);
+        console.log(allTasksProject);
         //ajout a named project
     })
 }
 
-export { openForm, createTask }
+export { createTask }

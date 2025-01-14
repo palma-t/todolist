@@ -1,7 +1,7 @@
 import "./styles.css";
 import { showOverdueTasks, showTasks, showTodayTasks, showUpcomingTasks } from "./showtasks.js"
-import { allTasksArray } from "./taskconstructor.js";
-import { openForm, createTask } from "./createtask.js";
+import { allTasksProject } from "./projectconstructor.js";
+import { createTask } from "./createtask.js";
 
 const popup = document.getElementById("taskForm");
 const overlay = document.getElementById("overlay");
@@ -42,7 +42,7 @@ overdueButton.addEventListener("click", () => {
 
 let showAllTasks = document.querySelector("#allTasks");
 showAllTasks.addEventListener("click", () => {
-    showTasks(allTasksArray);
+    showTasks(allTasksProject);
 });
 
 /* les fonctions dont on va avoir besoin (réfléchir aux classes après)

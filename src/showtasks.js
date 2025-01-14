@@ -1,4 +1,4 @@
-import { allTasksArray } from "./taskconstructor.js";
+import { allTasksProject } from "./projectconstructor.js";
 
 function showTasks(array) {
     let content = document.querySelector("#content");
@@ -17,14 +17,12 @@ function showTasks(array) {
         let taskDescription = document.createElement("p");
         taskDescription.innerText = task.description;
 
-        let del = document.createElement("button");
-        del.innerText = "Del"
-        del.classList.add("del");
+        let removeButton = document.createElement("button");
+        removeButton.innerText = "Del"
+        removeButton.classList.add("del");
 
-        del.addEventListener("click", function(){
-            allTasksArray.deleteTask(task);
-            //deleteTask a definir
-            //delete du projet?
+        removeButton.addEventListener("click", function(){
+            allTasksProject.removeTask(task);
         }); 
 
         taskSquare.classList.add("task-style");

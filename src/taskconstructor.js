@@ -12,6 +12,4 @@ class Task {
 */
 }
 
-let allTasksArray = [];
-
-export { Task, allTasksArray }
+export { Task }
