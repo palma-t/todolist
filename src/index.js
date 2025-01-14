@@ -19,6 +19,9 @@ const submitButton1 = document.querySelector("#taskFormButton");
 
 let addTaskButton = document.querySelector("#addTask");
 addTaskButton.addEventListener("click", () => {
+    //Adding projects' option to the tasks' form
+    chooseProject(allProjects);
+
     popup1.classList.remove("hidden");
     overlay.classList.remove("hidden");
 })
@@ -37,9 +40,6 @@ submitButton1.addEventListener("click", () => {
     popup1.classList.add("hidden");
     overlay.classList.add("hidden");
 })
-
-//Adding projects' option to the tasks' form
-chooseProject(allProjects);
 
 //Deal with project's form
 const popup2 = document.getElementById("projectForm");
@@ -92,10 +92,18 @@ showTasksButton.addEventListener("click", () => {
     showTasks(allTasksProject);
 });
 
-//Always effective / default appearence 
+//Always effective / default appearence enfin pour l'instant bof
 showTasks(allTasksProject);
 showProjectsMenu(allProjects);
 
+//Show tasks of one project, not sure it works: name of the project + 
+// difficulty of no task in no project
+let projectTitles = document.querySelectorAll(".project");
+projectTitles.forEach(project => {
+    project.addEventListener("click", () => {
+        showTasks(project);
+    })
+})
 
 /* les fonctions dont on va avoir besoin (réfléchir aux classes après)
 - add a task
