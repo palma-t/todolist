@@ -1,5 +1,6 @@
 class Project {
     constructor() {
+        this.title = this.title;
         this.tasks = [];
     }
 
@@ -8,13 +9,14 @@ class Project {
         console.log(this);
     }
 
-    removeTask(index) {
-        this.tasks.splice(index, 1);
-        console.log(this);
+    removeTask(taskTitle) {
+        this.tasks = this.tasks.filter(task => task.title !== taskTitle);
     }
-
 }
 
 let allTasksProject = new Project();
+allTasksProject.title = "All Tasks";
+let allProjects = new Project();
+allProjects.title = "All Projects";
 
-export { Project, allTasksProject } 
+export { Project, allTasksProject, allProjects } 
