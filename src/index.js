@@ -4,6 +4,7 @@ import { allProjects, allTasksProject } from "./projectconstructor.js";
 import { createTask } from "./createtask.js";
 import { showProjectsMenu } from "./showprojects.js";
 import { createProject } from "./createproject.js"
+import { chooseProject } from "./project-select.js"
 
 //Deal with opening and closing the task's form
 const popup1 = document.getElementById("taskForm");
@@ -36,6 +37,9 @@ submitButton1.addEventListener("click", () => {
     popup1.classList.add("hidden");
     overlay.classList.add("hidden");
 })
+
+//Adding projects' option to the tasks' form
+chooseProject(allProjects);
 
 //Deal with project's form
 const popup2 = document.getElementById("projectForm");
