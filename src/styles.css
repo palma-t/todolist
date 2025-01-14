@@ -62,10 +62,24 @@ nav ul li {
     gap: 10px;
 }
 
-#projectList {
+#project-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 0.2px solid white;
+}
+
+.projectList {
+    margin-left: 15px;
+}
+
+.projectList:hover {
+    cursor: pointer;
+    color: rgb(239, 109, 10);
 }
 
 .plus-button {
@@ -85,13 +99,6 @@ nav ul li:hover {
     background-color: white;
     color: rgb(42, 73, 165);
     cursor: pointer;
-}
-
-#projectList {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 0.2px solid white;
 }
 
 #content {

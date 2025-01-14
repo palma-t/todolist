@@ -1,6 +1,6 @@
 import "./styles.css";
 import { showOverdueTasks, showTasks, showTodayTasks, showUpcomingTasks } from "./showtasks.js"
-import { allTasksProject } from "./projectconstructor.js";
+import { allProjects, allTasksProject } from "./projectconstructor.js";
 import { createTask } from "./createtask.js";
 import { showProjectsMenu } from "./showprojects.js";
 import { createProject } from "./createproject.js"
@@ -90,7 +90,7 @@ showTasksButton.addEventListener("click", () => {
 
 //Always effective / default appearence 
 showTasks(allTasksProject);
-showProjectsMenu();
+showProjectsMenu(allProjects);
 
 
 /* les fonctions dont on va avoir besoin (réfléchir aux classes après)
