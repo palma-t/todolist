@@ -1,5 +1,5 @@
 import { Task } from "./taskconstructor"
-import { allTasksProject } from "./projectconstructor.js"
+import { allTasksProject, getProjectByTitle } from "./projectconstructor.js"
 
 function createTask() {
     let buttonSubmit = document.querySelector("#taskFormButton")
@@ -10,9 +10,10 @@ function createTask() {
 
         let newTask = new Task(inputName.value, inputDescription.value, selectedProject);
 
+        getProjectByTitle(selectedProject.value).addTask(newTask);
+
         allTasksProject.addTask(newTask);
         console.log(allTasksProject);
-        //ajout a named project
     })
 }
 

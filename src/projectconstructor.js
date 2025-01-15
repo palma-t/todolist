@@ -16,7 +16,12 @@ class Project {
 
 let allTasksProject = new Project();
 allTasksProject.title = "All Tasks";
+
 let allProjects = new Project();
 allProjects.title = "All Projects";
 
-export { Project, allTasksProject, allProjects } 
+function getProjectByTitle(title) {
+    return allProjects[title];
+}
+
+export { Project, allTasksProject, allProjects, getProjectByTitle } 

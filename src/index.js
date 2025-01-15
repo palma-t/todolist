@@ -1,5 +1,5 @@
 import "./styles.css";
-import { showOverdueTasks, showTasks, showTodayTasks, showUpcomingTasks } from "./showtasks.js"
+import { showOverdueTasks, showProjectTasks, showTasks, showTodayTasks, showUpcomingTasks } from "./showtasks.js"
 import { allProjects, allTasksProject } from "./projectconstructor.js";
 import { createTask } from "./createtask.js";
 import { showProjectsMenu } from "./showprojects.js";
@@ -96,22 +96,13 @@ showTasksButton.addEventListener("click", () => {
 showTasks(allTasksProject);
 showProjectsMenu(allProjects);
 
-//Show tasks of one project, not sure it works: name of the project + 
-// difficulty of no task in no project
-let projectTitles = document.querySelectorAll(".project");
-projectTitles.forEach(project => {
-    project.addEventListener("click", () => {
-        showTasks(project);
-    })
+/* Show tasks of one project, not sure it works: name of the project??
+document.querySelectorAll(".project").forEach(project => {
+    project.addEventListener("click", event => {
+        console.log("hey")
+        const projectTitle = parseInt(event.target.getAttribute("data-project-id"));
+        showTasksForProject(projectTitle);
+        showProjectTasks(projectTitle);
+    });
 })
-
-/* les fonctions dont on va avoir besoin (réfléchir aux classes après)
-- add a task
-- today: look for all tasks with a deadline today and show them
-- upcoming: same but for 3 coming days
-- all tasks
-- add a project
-- list all projects under Projects
-- select tasks of one project and show them
-- sur ce doc: les addeventlisteners pour tout le nav
-*/
+    */

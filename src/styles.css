@@ -73,8 +73,9 @@ nav ul li {
     border-bottom: 0.2px solid white;
 }
 
-.projectList {
-    margin-left: 15px;
+.project {
+    display: block;
+    margin: 15px;
 }
 
 .project:hover {
