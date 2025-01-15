@@ -1,5 +1,6 @@
 function chooseProject(array) {
     let projectSelect = document.querySelector("#project-select")
+    projectSelect.innerHTML = "";
 
     for(let project of array.tasks) {
         let option = document.createElement("option");

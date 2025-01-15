@@ -1,5 +1,7 @@
 import { Task } from "./taskconstructor"
-import { allProjects, allTasksProject, getProjectByTitle } from "./projectconstructor.js"
+import { allTasksProject, getProjectByTitle } from "./projectconstructor.js"
+import { populateProjectStorage } from "./storage.js"
+import { showTasks } from "./showtasks.js"
 
 function createTask() {
     let buttonSubmit = document.querySelector("#taskFormButton")
@@ -17,11 +19,11 @@ function createTask() {
             getProjectByTitle(selectedProject.value).addTask(newTask);
         } else {
             newTask.project = "No project";
-            //a checker
         }
 
         allTasksProject.addTask(newTask);
-        console.log(allTasksProject);
+        populateProjectStorage(allTasksProject.title, allTasksProject);
+        showTasks(JSON.parse(localStorage.getItem(allTasksProject.title)));
     })
 }
 

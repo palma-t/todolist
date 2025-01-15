@@ -5,6 +5,7 @@ import { createTask } from "./createtask.js";
 import { showProjectsMenu } from "./showprojects.js";
 import { createProject } from "./createproject.js"
 import { chooseProject } from "./project-select.js"
+import { getStorageItem } from "./storage.js";
 
 //Deal with opening and closing the task's form
 const popup1 = document.getElementById("taskForm");
@@ -74,35 +75,25 @@ createProject();
 //Deal with menu choices
 let todayButton = document.querySelector("#today");
 todayButton.addEventListener("click", () => {
-    showTodayTasks(allTasksProject);
+    showTodayTasks(getStorageItem(allTasksProject.title));
 });
 
 let upcomingButton = document.querySelector("#upcoming");
 upcomingButton.addEventListener("click", () => {
-    showUpcomingTasks(allTasksProject);
+    showUpcomingTasks(getStorageItem(allTasksProject.title));
 });
 
 let overdueButton = document.querySelector("#overdue");
 overdueButton.addEventListener("click", () => {
-    showOverdueTasks(allTasksProject);
+    showOverdueTasks(getStorageItem((allTasksProject.title)));
 });
 
 let showTasksButton = document.querySelector("#allTasks");
 showTasksButton.addEventListener("click", () => {
-    showTasks(allTasksProject);
+    showTasks(getStorageItem(allTasksProject.title));
 });
 
-//Always effective / default appearence enfin pour l'instant bof
-showTasks(allTasksProject);
-showProjectsMenu(allProjects);
+//Always effective
+showTasks(getStorageItem(allTasksProject.title));
+showProjectsMenu(getStorageItem(allProjects.title));
 
-/* Show tasks of one project, not sure it works: name of the project??
-document.querySelectorAll(".project").forEach(project => {
-    project.addEventListener("click", event => {
-        console.log("hey")
-        const projectTitle = parseInt(event.target.getAttribute("data-project-id"));
-        showTasksForProject(projectTitle);
-        showProjectTasks(projectTitle);
-    });
-})
-    */

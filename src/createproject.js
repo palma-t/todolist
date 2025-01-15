@@ -1,10 +1,10 @@
 import { Project, allProjects } from "./projectconstructor"
 import { showProjectsMenu } from "./showprojects.js"
+import { populateProjectStorage } from "./storage.js"
 
 function createProject() {
     let buttonSubmit = document.querySelector("#projectFormButton")
     buttonSubmit.addEventListener("click", () => {
-        //checker si ça marche!!
         let inputName = document.querySelector("#projectN");
 
         let newProject = new Project(inputName.value);
@@ -14,6 +14,8 @@ function createProject() {
         newProject.title = inputName.value;
         console.log(newProject.title);
         
+        populateProjectStorage(allProjects.title, allProjects);
+
         showProjectsMenu(allProjects);
     })
 }
