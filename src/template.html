@@ -54,7 +54,22 @@
                 <select name="project-select" id="project-select">
                 </select>
             </div>
-        
+
+            <div>
+                <label for="dueDate">Due date</label>-
+                <input type="date" id="dueDate" name="dueDate" value="2025-01-22" min="2025-01-01" max="2026-12-31" />
+            </div>
+
+            <label for="taskP">Priority</label>
+            <div class="custom-select">
+                <select name="taskP" id="taskP">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn" id="taskFormButton">Let's go</button>
         </form>
     </div>

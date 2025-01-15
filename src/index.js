@@ -72,19 +72,19 @@ createTask();
 createProject();
 
 //Deal with menu choices
-let todayButton = document.querySelector("#addTask");
+let todayButton = document.querySelector("#today");
 todayButton.addEventListener("click", () => {
-    showTodayTasks();
+    showTodayTasks(allTasksProject);
 });
 
-let upcomingButton = document.querySelector("#addTask");
+let upcomingButton = document.querySelector("#upcoming");
 upcomingButton.addEventListener("click", () => {
-    showUpcomingTasks();
+    showUpcomingTasks(allTasksProject);
 });
 
-let overdueButton = document.querySelector("#addTask");
+let overdueButton = document.querySelector("#overdue");
 overdueButton.addEventListener("click", () => {
-    showOverdueTasks();
+    showOverdueTasks(allTasksProject);
 });
 
 let showTasksButton = document.querySelector("#allTasks");
