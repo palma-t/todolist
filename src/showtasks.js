@@ -181,58 +181,86 @@ function showUpcomingTasks(array) {
     for(let task of array.tasks) {
         if(isThisWeek(new Date(task.dueDate))){
             let taskSquare = document.createElement("div");
+            taskSquare.classList.add("task-style");
+
             let taskTitle = document.createElement("h3");
             taskTitle.innerText = task.title;
-    
+
+            let completion = document.createElement("input");
+            completion.type = "checkbox";
+
+            completion.addEventListener("click", () => {
+                if(task.completed === false){
+                    task.completed = true;
+                    console.log(task);
+                    taskSquare.classList.remove("task-style");
+                    taskSquare.classList.add("taskDone");
+                } else {
+                    task.completed = false;
+                    console.log(task);
+                    taskSquare.classList.add("task-style");
+                    taskSquare.classList.remove("taskDone");
+                }
+            })
+
+            let taskTopDiv = document.createElement("div");
+            taskTopDiv.appendChild(taskTitle);
+            taskTopDiv.appendChild(completion);
+            taskTopDiv.classList.add("taskTopDiv");
+
             let taskDescription = document.createElement("p");
             taskDescription.innerText = task.description;
-    
+
             let taskProject = document.createElement("p");
             taskProject.innerText = task.project;
+            taskProject.classList.add("taskSquare-project");
 
             let taskDueDate = document.createElement("div");
             let formatedDate = intlFormatDistance(new Date(task.dueDate), new Date());
-            let dateStyle = compareAsc(new Date(task.dueDate), new Date());
-            if(dateStyle > 0){
-                taskDueDate.classList.add("greenStyle");
-            }else{
-                taskDueDate.classList.add("redStyle");
-            }
+            dateStyling(task.dueDate, taskDueDate);
             taskDueDate.innerText = formatedDate;
-    
+
+            let taskBottomDiv = document.createElement("div");
+            taskBottomDiv.classList.add("taskBottomDiv");
+
             let priority = document.createElement("div");
             priority.innerText = task.priority;
-            if(priority === "1"){
-                priority.classList.add(".priority1");
-            } else if(priority === "2"){
-                priority.classList.add(".priority2");
-            } else if(priority === "3"){
-                priority.classList.add(".priority3");
-            }else if(priority === "4"){
-                priority.classList.add(".priority4");
-            }
-    
-            let editButton = document.createElement("button");
-            editButton.innerText = "Ed";
+            priorityStyle(task.priority, priority);
+
+            let iconDiv = document.createElement("div");
+            iconDiv.classList.add("iconDiv");
+
+            let editButton = document.createElement("img");
+            editButton.src = editImg;
             editButton.classList.add("edit");
-    
-            let removeButton = document.createElement("button");
-            removeButton.innerText = "Del"
-            removeButton.classList.add("del");
-    
-            removeButton.addEventListener("click", function(){
+
+            editButton.addEventListener("click", () => {
+                editTask(task);
+                chooseProject(allProjects);
+            })
+
+            let deleteButton = document.createElement("img");
+            deleteButton.src = deleteImg;
+            deleteButton.classList.add("del");
+
+            deleteButton.addEventListener("click", function(){
+                taskSquare.remove();
                 allTasksProject.removeTask(task.title);
+                localStorage.removeItem(task.title);
+                populateProjectStorage(allTasksProject.title, allTasksProject);
             }); 
-    
-            taskSquare.classList.add("task-style");
-            taskSquare.appendChild(taskTitle);
+
+            iconDiv.appendChild(editButton);
+            iconDiv.appendChild(deleteButton);
+            taskBottomDiv.appendChild(priority);
+            taskBottomDiv.appendChild(iconDiv);
+
+            taskSquare.appendChild(taskTopDiv);
             taskSquare.appendChild(taskDescription);
             taskSquare.appendChild(taskProject);
             taskSquare.appendChild(taskDueDate);
-            taskSquare.appendChild(priority);
-            taskSquare.appendChild(editButton);
-            taskSquare.appendChild(removeButton);
-    
+            taskSquare.appendChild(taskBottomDiv);
+
             gridDiv.appendChild(taskSquare);
         }
     }
@@ -253,58 +281,86 @@ function showOverdueTasks(array) {
     for(let task of array.tasks) {
         if(compareAsc(new Date(task.dueDate), new Date()) < 0){
             let taskSquare = document.createElement("div");
+            taskSquare.classList.add("task-style");
+
             let taskTitle = document.createElement("h3");
             taskTitle.innerText = task.title;
-    
+
+            let completion = document.createElement("input");
+            completion.type = "checkbox";
+
+            completion.addEventListener("click", () => {
+                if(task.completed === false){
+                    task.completed = true;
+                    console.log(task);
+                    taskSquare.classList.remove("task-style");
+                    taskSquare.classList.add("taskDone");
+                } else {
+                    task.completed = false;
+                    console.log(task);
+                    taskSquare.classList.add("task-style");
+                    taskSquare.classList.remove("taskDone");
+                }
+            })
+
+            let taskTopDiv = document.createElement("div");
+            taskTopDiv.appendChild(taskTitle);
+            taskTopDiv.appendChild(completion);
+            taskTopDiv.classList.add("taskTopDiv");
+
             let taskDescription = document.createElement("p");
             taskDescription.innerText = task.description;
-    
+
             let taskProject = document.createElement("p");
             taskProject.innerText = task.project;
+            taskProject.classList.add("taskSquare-project");
 
             let taskDueDate = document.createElement("div");
             let formatedDate = intlFormatDistance(new Date(task.dueDate), new Date());
-            let dateStyle = compareAsc(new Date(task.dueDate), new Date());
-            if(dateStyle > 0){
-                taskDueDate.classList.add("greenStyle");
-            }else{
-                taskDueDate.classList.add("redStyle");
-            }
+            dateStyling(task.dueDate, taskDueDate);
             taskDueDate.innerText = formatedDate;
-    
+
+            let taskBottomDiv = document.createElement("div");
+            taskBottomDiv.classList.add("taskBottomDiv");
+
             let priority = document.createElement("div");
             priority.innerText = task.priority;
-            if(priority === "1"){
-                priority.classList.add(".priority1");
-            } else if(priority === "2"){
-                priority.classList.add(".priority2");
-            } else if(priority === "3"){
-                priority.classList.add(".priority3");
-            }else if(priority === "4"){
-                priority.classList.add(".priority4");
-            }
-    
-            let editButton = document.createElement("button");
-            editButton.innerText = "Ed";
+            priorityStyle(task.priority, priority);
+
+            let iconDiv = document.createElement("div");
+            iconDiv.classList.add("iconDiv");
+
+            let editButton = document.createElement("img");
+            editButton.src = editImg;
             editButton.classList.add("edit");
-    
-            let removeButton = document.createElement("button");
-            removeButton.innerText = "Del"
-            removeButton.classList.add("del");
-    
-            removeButton.addEventListener("click", function(){
+
+            editButton.addEventListener("click", () => {
+                editTask(task);
+                chooseProject(allProjects);
+            })
+
+            let deleteButton = document.createElement("img");
+            deleteButton.src = deleteImg;
+            deleteButton.classList.add("del");
+
+            deleteButton.addEventListener("click", function(){
+                taskSquare.remove();
                 allTasksProject.removeTask(task.title);
+                localStorage.removeItem(task.title);
+                populateProjectStorage(allTasksProject.title, allTasksProject);
             }); 
-    
-            taskSquare.classList.add("task-style");
-            taskSquare.appendChild(taskTitle);
+
+            iconDiv.appendChild(editButton);
+            iconDiv.appendChild(deleteButton);
+            taskBottomDiv.appendChild(priority);
+            taskBottomDiv.appendChild(iconDiv);
+
+            taskSquare.appendChild(taskTopDiv);
             taskSquare.appendChild(taskDescription);
             taskSquare.appendChild(taskProject);
             taskSquare.appendChild(taskDueDate);
-            taskSquare.appendChild(priority);
-            taskSquare.appendChild(editButton);
-            taskSquare.appendChild(removeButton);
-    
+            taskSquare.appendChild(taskBottomDiv);
+
             gridDiv.appendChild(taskSquare);
         }
     }
@@ -330,53 +386,80 @@ function showProjectTasks(title) {
 
     for(let task of project.tasks) {
         let taskSquare = document.createElement("div");
+        taskSquare.classList.add("task-style");
+
         let taskTitle = document.createElement("h3");
         taskTitle.innerText = task.title;
+
+        let completion = document.createElement("input");
+        completion.type = "checkbox";
+
+        completion.addEventListener("click", () => {
+            if(task.completed === false){
+                task.completed = true;
+                console.log(task);
+                taskSquare.classList.remove("task-style");
+                taskSquare.classList.add("taskDone");
+            } else {
+                task.completed = false;
+                console.log(task);
+                taskSquare.classList.add("task-style");
+                taskSquare.classList.remove("taskDone");
+            }
+        })
+
+        let taskTopDiv = document.createElement("div");
+        taskTopDiv.appendChild(taskTitle);
+        taskTopDiv.appendChild(completion);
+        taskTopDiv.classList.add("taskTopDiv");
 
         let taskDescription = document.createElement("p");
         taskDescription.innerText = task.description;
 
         let taskDueDate = document.createElement("div");
         let formatedDate = intlFormatDistance(new Date(task.dueDate), new Date());
-        let dateStyle = compareAsc(new Date(task.dueDate), new Date());
-        if(dateStyle > 0){
-            taskDueDate.classList.add("greenStyle");
-        }else{
-            taskDueDate.classList.add("redStyle");
-        }
+        dateStyling(task.dueDate, taskDueDate);
         taskDueDate.innerText = formatedDate;
+
+        let taskBottomDiv = document.createElement("div");
+        taskBottomDiv.classList.add("taskBottomDiv");
 
         let priority = document.createElement("div");
         priority.innerText = task.priority;
-        if(priority === "1"){
-            priority.classList.add(".priority1");
-        } else if(priority === "2"){
-            priority.classList.add(".priority2");
-        } else if(priority === "3"){
-            priority.classList.add(".priority3");
-        }else if(priority === "4"){
-            priority.classList.add(".priority4");
-        }
+        priorityStyle(task.priority, priority);
 
-        let editButton = document.createElement("button");
-        editButton.innerText = "Ed";
+        let iconDiv = document.createElement("div");
+        iconDiv.classList.add("iconDiv");
+
+        let editButton = document.createElement("img");
+        editButton.src = editImg;
         editButton.classList.add("edit");
 
-        let removeButton = document.createElement("button");
-        removeButton.innerText = "Del"
-        removeButton.classList.add("del");
+        editButton.addEventListener("click", () => {
+            editTask(task);
+            chooseProject(allProjects);
+        })
 
-        removeButton.addEventListener("click", function(){
+        let deleteButton = document.createElement("img");
+        deleteButton.src = deleteImg;
+        deleteButton.classList.add("del");
+
+        deleteButton.addEventListener("click", function(){
+            taskSquare.remove();
             allTasksProject.removeTask(task.title);
+            localStorage.removeItem(task.title);
+            populateProjectStorage(allTasksProject.title, allTasksProject);
         }); 
 
-        taskSquare.classList.add("task-style");
-        taskSquare.appendChild(taskTitle);
+        iconDiv.appendChild(editButton);
+        iconDiv.appendChild(deleteButton);
+        taskBottomDiv.appendChild(priority);
+        taskBottomDiv.appendChild(iconDiv);
+
+        taskSquare.appendChild(taskTopDiv);
         taskSquare.appendChild(taskDescription);
         taskSquare.appendChild(taskDueDate);
-        taskSquare.appendChild(priority);
-        taskSquare.appendChild(editButton);
-        taskSquare.appendChild(removeButton);
+        taskSquare.appendChild(taskBottomDiv);
 
         gridDiv.appendChild(taskSquare);
     }

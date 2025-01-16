@@ -102,6 +102,20 @@ nav ul li:hover {
     cursor: pointer;
 }
 
+.project-menu-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-style {
+    max-width: 25px;
+}
+
+.delete-style:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
 #content {
     grid-column: 2/3;
 
