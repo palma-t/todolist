@@ -1,4 +1,5 @@
 import { allTasksProject, getProjectByTitle } from "./projectconstructor.js";
+import { Task } from "./taskconstructor.js";
 const { intlFormatDistance } = require("date-fns");
 const { compareAsc } = require("date-fns");
 const { isToday } = require("date-fns");
@@ -16,8 +17,32 @@ function showTasks(array) {
 
     for(let task of array.tasks) {
         let taskSquare = document.createElement("div");
+        taskSquare.classList.add("task-style");
+
         let taskTitle = document.createElement("h3");
         taskTitle.innerText = task.title;
+
+        let completion = document.createElement("input");
+        completion.type = "checkbox";
+
+        completion.addEventListener("click", () => {
+            if(task.completed === false){
+                task.completed = true;
+                console.log(task);
+                taskSquare.classList.remove("task-style");
+                taskSquare.classList.add("taskDone");
+            } else {
+                task.completed = false;
+                console.log(task);
+                taskSquare.classList.add("task-style");
+                taskSquare.classList.remove("taskDone");
+            }
+        })
+
+        let taskTopDiv = document.createElement("div");
+        taskTopDiv.appendChild(taskTitle);
+        taskTopDiv.appendChild(completion);
+        taskTopDiv.classList.add("taskTopDiv");
 
         let taskDescription = document.createElement("p");
         taskDescription.innerText = task.description;
@@ -35,11 +60,14 @@ function showTasks(array) {
         }
         taskDueDate.innerText = formatedDate;
 
+        let taskBottomDiv = document.createElement("div");
+        taskBottomDiv.classList.add("taskBottomDiv");
+
         let priority = document.createElement("div");
         priority.innerText = task.priority;
-        if(priority === "1"){
+        if(priority == "1"){
             priority.classList.add(".priority1");
-        } else if(priority === "2"){
+        } else if(priority == "2"){
             priority.classList.add(".priority2");
         } else if(priority === "3"){
             priority.classList.add(".priority3");
@@ -47,6 +75,8 @@ function showTasks(array) {
             priority.classList.add(".priority4");
         }
 
+        let iconDiv = document.createElement("div");
+        iconDiv.classList.add("iconDiv")
         let editButton = document.createElement("button");
         editButton.innerText = "Ed";
         editButton.classList.add("edit");
@@ -59,14 +89,16 @@ function showTasks(array) {
             allTasksProject.removeTask(task.title);
         }); 
 
-        taskSquare.classList.add("task-style");
-        taskSquare.appendChild(taskTitle);
+        iconDiv.appendChild(editButton);
+        iconDiv.appendChild(removeButton);
+        taskBottomDiv.appendChild(priority);
+        taskBottomDiv.appendChild(iconDiv);
+
+        taskSquare.appendChild(taskTopDiv);
         taskSquare.appendChild(taskDescription);
         taskSquare.appendChild(taskProject);
         taskSquare.appendChild(taskDueDate);
-        taskSquare.appendChild(priority);
-        taskSquare.appendChild(editButton);
-        taskSquare.appendChild(removeButton);
+        taskSquare.appendChild(taskBottomDiv);
 
         gridDiv.appendChild(taskSquare);
     }
