@@ -6,6 +6,8 @@ const { isThisWeek } = require("date-fns");
 import deleteImg from "./images/delete.svg";
 import editImg from "./images/edit.svg";
 import { dateStyling, priorityStyle } from "./task-styling.js"
+import { populateProjectStorage } from "./storage.js";
+import { edittask } from "./taskedit.js"
 
 function showTasks(array) {
     let content = document.querySelector("#content");
@@ -66,21 +68,29 @@ function showTasks(array) {
         priorityStyle(task.priority, priority);
 
         let iconDiv = document.createElement("div");
-        iconDiv.classList.add("iconDiv")
+        iconDiv.classList.add("iconDiv");
+
         let editButton = document.createElement("img");
         editButton.src = editImg;
         editButton.classList.add("edit");
 
-        let removeButton = document.createElement("img");
-        removeButton.src = deleteImg;
-        removeButton.classList.add("del");
+        editButton.addEventListener("click", () => {
+            edittask(task);
+        })
 
-        removeButton.addEventListener("click", function(){
+        let deleteButton = document.createElement("img");
+        deleteButton.src = deleteImg;
+        deleteButton.classList.add("del");
+
+        deleteButton.addEventListener("click", function(){
+            taskSquare.remove();
             allTasksProject.removeTask(task.title);
+            localStorage.removeItem(task.title);
+            populateProjectStorage(allTasksProject.title, allTasksProject);
         }); 
 
         iconDiv.appendChild(editButton);
-        iconDiv.appendChild(removeButton);
+        iconDiv.appendChild(deleteButton);
         taskBottomDiv.appendChild(priority);
         taskBottomDiv.appendChild(iconDiv);
 

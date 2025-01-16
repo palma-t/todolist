@@ -8,7 +8,7 @@ function createTask() {
     buttonSubmit.addEventListener("click", () => {
         let inputName = document.querySelector("#taskN");
         let inputDescription = document.querySelector("#taskD");
-        let selectedProject = document.querySelector("#project-select");
+        let selectedProject = document.querySelector("#taskForm-project");
         let selectedDate = document.querySelector("#dueDate");
         let priority = document.querySelector("#taskP");
 
