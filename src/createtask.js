@@ -27,4 +27,30 @@ function createTask() {
     })
 }
 
-export { createTask }
+function updateTask(task) {
+        allTasksProject.removeTask(task.title);
+
+        let inputName = document.querySelector("#newTaskN");
+        let inputDescription = document.querySelector("#newTaskD");
+        let selectedProject = document.querySelector("#newTaskForm-project");
+        let selectedDate = document.querySelector("#newDueDate");
+        let priority = document.querySelector("#newTaskP");
+
+        task.title = inputName.value;
+        task.description = inputDescription.value;
+        task.dueDate = selectedDate.value;
+        task.priority = priority.value;
+
+        console.log(task);
+
+        if(selectedProject.value =! task.project){
+            getProjectByTitle(task.project).removeTask(task.title);
+            task.project = selectedProject.value;
+            getProjectByTitle(selectedProject.value).addTask(task);
+        }
+
+        allTasksProject.addTask(task);
+        populateProjectStorage(allTasksProject.title, allTasksProject);
+        showTasks(JSON.parse(localStorage.getItem(allTasksProject.title)));
+}
+export { createTask, updateTask }

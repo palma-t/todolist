@@ -1,7 +1,8 @@
 import { chooseProject } from "./project-select.js"
 import { allProjects } from "./projectconstructor.js"
+import { updateTask } from "./createtask.js";
 
-function edittask(task) {
+function editTask(task) {
     let body = document.querySelector("body");
 
     console.log("yo")
@@ -30,19 +31,20 @@ function edittask(task) {
     let taskName = document.createElement("input");
     taskName.setAttribute("type", "text");
     taskName.setAttribute("name", "taskN");
-    taskName.setAttribute("id", "taskN");
+    taskName.setAttribute("id", "newTaskN");
     taskName.setAttribute("placeholder", task.title);
 
     let taskDescription = document.createElement("input");
     taskDescription.setAttribute("type", "text");
     taskDescription.setAttribute("name", "taskD");
-    taskDescription.setAttribute("id", "taskD");
+    taskDescription.setAttribute("id", "newTaskD");
     taskDescription.setAttribute("placeholder", task.description);
 
     let customSelect = document.createElement("div");
     customSelect.classList.add("custom-select");
     let selectProject = document.createElement("select");
     selectProject.classList.add("project-select");
+    selectProject.setAttribute("id", "newTaskForm-project");
     customSelect.appendChild(selectProject);
 
     let dueDate = document.createElement("input");
@@ -51,12 +53,13 @@ function edittask(task) {
     dueDate.setAttribute("value", task.dueDate);
     dueDate.setAttribute("min", "2025-01-01");
     dueDate.setAttribute("max", "2026-12-31");
+    dueDate.setAttribute("id", "newDueDate");
 
     let prioritySelect = document.createElement("div");
     prioritySelect.classList.add("custom-select");
     let choosePriority = document.createElement("select");
     choosePriority.setAttribute("name", "taskP");
-    choosePriority.setAttribute("id", "taskP");
+    choosePriority.setAttribute("id", "newTaskP");
     let option1 = document.createElement("option");
     option1.setAttribute("value", "1");
     option1.innerText = "1";
@@ -78,8 +81,13 @@ function edittask(task) {
 
     let submitButton = document.createElement("button");
     submitButton.setAttribute("type", "submit");
+    submitButton.setAttribute("id", "editTaskButton");
     submitButton.classList.add("btn");
     submitButton.innerText = "Modify";
+
+    submitButton.addEventListener("click", () => {
+        updateTask(task);
+    })
 
     editForm.appendChild(topEditForm);
     editForm.appendChild(taskName);
@@ -118,5 +126,5 @@ function edittask(task) {
 
 }
 
-export { edittask }
+export { editTask }
 

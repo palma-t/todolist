@@ -1,4 +1,4 @@
-import { allTasksProject, getProjectByTitle } from "./projectconstructor.js";
+import { allTasksProject, getProjectByTitle, allProjects } from "./projectconstructor.js";
 const { intlFormatDistance } = require("date-fns");
 const { compareAsc } = require("date-fns");
 const { isToday } = require("date-fns");
@@ -7,7 +7,8 @@ import deleteImg from "./images/delete.svg";
 import editImg from "./images/edit.svg";
 import { dateStyling, priorityStyle } from "./task-styling.js"
 import { populateProjectStorage } from "./storage.js";
-import { edittask } from "./taskedit.js"
+import { editTask } from "./taskedit.js"
+import { chooseProject } from "./project-select.js";
 
 function showTasks(array) {
     let content = document.querySelector("#content");
@@ -75,7 +76,8 @@ function showTasks(array) {
         editButton.classList.add("edit");
 
         editButton.addEventListener("click", () => {
-            edittask(task);
+            editTask(task);
+            chooseProject(allProjects);
         })
 
         let deleteButton = document.createElement("img");
