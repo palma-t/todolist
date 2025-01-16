@@ -12,7 +12,7 @@ function createTask() {
         let selectedDate = document.querySelector("#dueDate");
         let priority = document.querySelector("#taskP");
 
-        let newTask = new Task(inputName.value, inputDescription.value, selectedProject, selectedDate.value, priority.value);
+        let newTask = new Task(inputName.value, inputDescription.value, selectedProject.value, selectedDate.value, priority.value);
         console.log(newTask);
 
         if(selectedProject.value){

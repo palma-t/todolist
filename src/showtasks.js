@@ -1,9 +1,11 @@
 import { allTasksProject, getProjectByTitle } from "./projectconstructor.js";
-import { Task } from "./taskconstructor.js";
 const { intlFormatDistance } = require("date-fns");
 const { compareAsc } = require("date-fns");
 const { isToday } = require("date-fns");
 const { isThisWeek } = require("date-fns");
+import deleteImg from "./images/delete.svg";
+import editImg from "./images/edit.svg";
+import { dateStyling, priorityStyle } from "./task-styling.js"
 
 function showTasks(array) {
     let content = document.querySelector("#content");
@@ -49,15 +51,11 @@ function showTasks(array) {
 
         let taskProject = document.createElement("p");
         taskProject.innerText = task.project;
+        taskProject.classList.add("taskSquare-project");
 
         let taskDueDate = document.createElement("div");
         let formatedDate = intlFormatDistance(new Date(task.dueDate), new Date());
-        let dateStyle = compareAsc(new Date(task.dueDate), new Date());
-        if(dateStyle > 0){
-            taskDueDate.classList.add("greenStyle");
-        }else{
-            taskDueDate.classList.add("redStyle");
-        }
+        dateStyling(task.dueDate, taskDueDate);
         taskDueDate.innerText = formatedDate;
 
         let taskBottomDiv = document.createElement("div");
@@ -65,24 +63,16 @@ function showTasks(array) {
 
         let priority = document.createElement("div");
         priority.innerText = task.priority;
-        if(priority == "1"){
-            priority.classList.add(".priority1");
-        } else if(priority == "2"){
-            priority.classList.add(".priority2");
-        } else if(priority === "3"){
-            priority.classList.add(".priority3");
-        }else if(priority === "4"){
-            priority.classList.add(".priority4");
-        }
+        priorityStyle(task.priority, priority);
 
         let iconDiv = document.createElement("div");
         iconDiv.classList.add("iconDiv")
-        let editButton = document.createElement("button");
-        editButton.innerText = "Ed";
+        let editButton = document.createElement("img");
+        editButton.src = editImg;
         editButton.classList.add("edit");
 
-        let removeButton = document.createElement("button");
-        removeButton.innerText = "Del"
+        let removeButton = document.createElement("img");
+        removeButton.src = deleteImg;
         removeButton.classList.add("del");
 
         removeButton.addEventListener("click", function(){

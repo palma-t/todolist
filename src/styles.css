@@ -234,6 +234,16 @@ form #dueDate {
     justify-content: space-between;
 }
 
+.taskSquare-project {
+    margin-top: 5px;
+    color: grey;
+    font-size: 0.8rem;
+}
+
+.priority1, .priority2, .priority3, .priority4 {
+    font-size: 0.8rem;
+}
+
 .priority1{
     background-color: red;
     color: red;
@@ -252,10 +262,12 @@ form #dueDate {
 }
 
 .greenStyle {
+    font-size: 0.8rem;
     color: green;
 }
 
 .redStyle {
+    font-size: 0.8rem;
     color: red;
 }
 
@@ -269,4 +281,9 @@ form #dueDate {
     display: flex;
     justify-content: flex-end;
     gap: 5px;
+}
+
+.edit:hover, .del:hover {
+    cursor: pointer;
+    opacity: 0.5;
 }
