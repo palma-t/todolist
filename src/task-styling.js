@@ -11,13 +11,13 @@ function dateStyling(taskdate, div) {
 
 function priorityStyle(taskpriority, priority) {
     if(taskpriority === "1"){
-        priority.classList.add(".priority1");
+        priority.classList.add("priority1");
     } else if(taskpriority === "2"){
-        priority.classList.add(".priority2");
+        priority.classList.add("priority2");
     } else if(taskpriority === "3"){
-        priority.classList.add(".priority3");
+        priority.classList.add("priority3");
     }else if(taskpriority === "4"){
-        priority.classList.add(".priority4");
+        priority.classList.add("priority4");
     }
 }
 

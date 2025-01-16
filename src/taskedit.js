@@ -24,6 +24,8 @@ function editTask(task) {
     let editFormTitle = document.createElement("h3");
     editFormTitle.innerText = "Edit task";
     let closeButton = document.createElement("button");
+    closeButton.innerText = "x";
+    closeButton.classList.add("closeButton");
 
     topEditForm.appendChild(editFormTitle);
     topEditForm.appendChild(closeButton);
@@ -33,12 +35,14 @@ function editTask(task) {
     taskName.setAttribute("name", "taskN");
     taskName.setAttribute("id", "newTaskN");
     taskName.setAttribute("placeholder", task.title);
+    taskName.required = true;
 
     let taskDescription = document.createElement("input");
     taskDescription.setAttribute("type", "text");
     taskDescription.setAttribute("name", "taskD");
     taskDescription.setAttribute("id", "newTaskD");
     taskDescription.setAttribute("placeholder", task.description);
+    taskDescription.required = true;
 
     let customSelect = document.createElement("div");
     customSelect.classList.add("custom-select");
@@ -54,6 +58,7 @@ function editTask(task) {
     dueDate.setAttribute("min", "2025-01-01");
     dueDate.setAttribute("max", "2026-12-31");
     dueDate.setAttribute("id", "newDueDate");
+    dueDate.required = true;
 
     let prioritySelect = document.createElement("div");
     prioritySelect.classList.add("custom-select");

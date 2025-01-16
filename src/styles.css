@@ -156,7 +156,7 @@ nav ul li:hover {
     justify-content: space-between;
 }
 
-#closeButton {
+.closeButton {
     border: 1px solid white;
     border-radius: 50px;
     font-size: 1rem;
@@ -215,16 +215,13 @@ form #dueDate {
 }
 
 .task-grid {
-    display: grid;
-    grid-template-rows: max(210px, 1fr) max(210px, 1fr) max(210px, 1fr);
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 20px;
-    
     padding: 30px;
 }
 
 .task-style {
-    max-width: 300px;
+    width: clamp(200px, 250px, 40vw);
     padding: 20px;
     border: 1px solid rgb(239, 109, 10);
     border-radius: 15px;
@@ -256,11 +253,14 @@ form #dueDate {
 
 .priority1, .priority2, .priority3, .priority4 {
     font-size: 0.8rem;
+    margin: 5px;
+    padding: 2px 8px;
+    border-radius: 50px; 
+    color: white;
 }
 
 .priority1{
     background-color: red;
-    color: red;
 }
 
 .priority2{
@@ -295,6 +295,10 @@ form #dueDate {
     display: flex;
     justify-content: flex-end;
     gap: 5px;
+}
+
+.iconDiv img {
+    max-height: 25px;
 }
 
 .edit:hover, .del:hover {

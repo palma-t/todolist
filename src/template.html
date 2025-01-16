@@ -40,11 +40,11 @@
         <form action="" class="form-container">
             <div class="top-form">
                 <h3>Add a task</h3>
-                <button id="closeButton">x</button>
+                <button id="closeButton" class="closeButton">x</button>
             </div>
         
             <label for="taskN">Task's name</label>
-            <input type="text" name="taskN" id="taskN">
+            <input type="text" name="taskN" id="taskN" required>
         
             <label for="taskD">Description</label>
             <input type="text" name="taskD" id="taskD">
@@ -81,7 +81,7 @@
             </div>
         
             <label for="projectN">Project's name</label>
-            <input type="text" name="projectN" id="projectN">
+            <input type="text" name="projectN" id="projectN" required>
         
             <button type="submit" class="btn" id="projectFormButton">Let's go</button>
         </form>
